@@ -1,4 +1,4 @@
-﻿/* Ukweli Party â€” institutional site, mobile-first */
+/* Ukweli Party - institutional site, mobile-first */
 :root {
   --green: #0b6b3a;
   --green-dark: #074d29;
@@ -110,24 +110,48 @@ button, input, select, textarea {
 
 .nav a {
   display: block;
-  padding: 0.95rem 0.2rem;
+  padding: 0.95rem 0.35rem;
   border-top: 1px solid rgba(255, 255, 255, 0.18);
   color: var(--paper);
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.055em;
   line-height: 1.35;
-  transition: color 0.2s ease, padding-left 0.2s ease;
+  transition: color 0.2s ease, background 0.2s ease, padding-left 0.2s ease;
 }
 
 .nav a:last-child { border-bottom: 1px solid rgba(255, 255, 255, 0.18); }
 
-.nav a:hover,
+.nav a:hover {
+  color: var(--gold);
+  background: rgba(240, 194, 58, 0.1);
+  padding-left: 0.55rem;
+}
+
 .nav a[aria-current="page"] {
   color: var(--gold);
-  padding-left: 0.35rem;
+  background: rgba(240, 194, 58, 0.14);
+  box-shadow: inset 3px 0 0 var(--gold);
+  padding-left: 0.55rem;
+}
+
+.nav a.nav-home {
+  color: var(--gold);
+  font-weight: 800;
+  background: rgba(0, 0, 0, 0.12);
+  border-top: 1px solid rgba(240, 194, 58, 0.35);
+  border-radius: 8px 8px 0 0;
+}
+
+.nav a.nav-home[aria-current="page"] {
+  background: rgba(240, 194, 58, 0.2);
+}
+
+.nav a:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: -2px;
 }
 
 .sidebar-foot {
@@ -552,7 +576,7 @@ button, input, select, textarea {
   line-height: 1;
 }
 
-.faq details[open] summary::after { content: "â€“"; }
+.faq details[open] summary::after { content: """"; }
 
 .faq p {
   margin: 0 0 1.15rem;
@@ -834,11 +858,36 @@ body.nav-open .nav-backdrop { display: block; }
   }
 }
 
-.nav a[href="index.html"] {
-  color: var(--gold);
-  font-weight: 800;
+
+
+
+/* Selection: neutral, not gold wash on banners */
+::selection {
+  background: rgba(11, 107, 58, 0.22);
+  color: var(--ink);
 }
 
-.nav a[href="index.html"][aria-current="page"] {
-  background: rgba(240, 194, 58, 0.12);
+.hero-copy ::selection,
+.motto ::selection,
+.banner ::selection {
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+.banner {
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Mobile menu must not cover nav labels */
+@media (max-width: 1000px) {
+  .sidebar {
+    padding-top: 4.5rem;
+  }
+
+  .nav a {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+  }
 }
